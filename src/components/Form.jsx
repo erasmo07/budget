@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Error from './Error';
 import shortid from 'shortid';
+import PropType from 'prop-types';
 
 
 const Form = ({addExpenses}) => {
@@ -8,7 +9,7 @@ const Form = ({addExpenses}) => {
     const [error, setError] = useState(false);
     const [expense, setExpense] = useState({
         name: '',
-        amount: '',
+        amount: 0,
     });
 
     const handleSubmit = e => {
@@ -58,6 +59,10 @@ const Form = ({addExpenses}) => {
             <button>Guardar</button>
         </form>
      );
+}
+
+Form.propTypes = {
+    addExpenses: PropType.func.isRequired
 }
  
 export default Form;
