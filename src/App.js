@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Ask from './components/Ask';
 import Form from './components/Form';
 import List from './components/List';
+import Budget from './components/Budget';
 
 function App() {
   
@@ -10,6 +11,7 @@ function App() {
   const [expenses, setExpenses] = useState([]);
 
   const addExpenses = expense => {
+    setRemaining(remaining - parseInt(expense.amount, 10));
     setExpenses([...expenses, expense]);
   }
 
@@ -29,6 +31,7 @@ function App() {
               </div>
               <div className="one-half column">
                 <List expenses={expenses} />
+                <Budget budget={budget} remaining={remaining}/>
               </div>
             </div>
           }
